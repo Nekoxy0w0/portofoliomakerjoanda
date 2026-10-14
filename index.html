@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV - Joanda Dyrta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Toolbar (tidak ikut tercetak / masuk PDF) -->
+  <div class="toolbar" id="toolbar">
+    <button id="btnEdit" type="button">Edit CV</button>
+    <button id="btnUndo" type="button" class="ghost" disabled title="Undo (Ctrl+Z)">↩ Undo</button>
+    <button id="btnRedo" type="button" class="ghost" disabled title="Redo (Ctrl+Y)">↪ Redo</button>
+    <button id="btnPdf" type="button" class="primary">Download PDF</button>
+    <button id="btnPrint" type="button">Cetak / Simpan PDF (teks bisa diseleksi)</button>
+    <button id="btnReset" type="button" class="ghost">Reset ke awal</button>
+    <span class="hint" id="hint">Klik "Edit CV" untuk mengubah isi. Tekan Ctrl+B untuk menebalkan teks.</span>
+  </div>
+
+  <!-- Format Toolbar (muncul saat mode edit) -->
+  <div class="format-bar" id="formatBar">
+    <label for="fmtFont">Font</label>
+    <select id="fmtFont">
+      <option value="">— Bawaan —</option>
+      <option value="'Segoe UI', sans-serif">Segoe UI</option>
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="'Helvetica Neue', Helvetica, sans-serif">Helvetica</option>
+      <option value="'Times New Roman', serif">Times New Roman</option>
+      <option value="Georgia, serif">Georgia</option>
+      <option value="Verdana, sans-serif">Verdana</option>
+      <option value="'Courier New', monospace">Courier New</option>
+      <option value="Tahoma, sans-serif">Tahoma</option>
+    </select>
+
+    <div class="fmt-sep"></div>
+
+    <label for="fmtSize">Ukuran</label>
+    <input type="number" id="fmtSize" min="6" max="72" step="1" placeholder="pt">
+
+    <div class="fmt-sep"></div>
+
+    <button type="button" class="fmt-btn" id="fmtBold" title="Bold (Ctrl+B)"><b>B</b></button>
+    <button type="button" class="fmt-btn" id="fmtItalic" title="Italic (Ctrl+I)"><i>I</i></button>
+    <button type="button" class="fmt-btn" id="fmtUnderline" title="Underline (Ctrl+U)"><u>U</u></button>
+
+    <div class="fmt-sep"></div>
+
+    <button type="button" class="fmt-btn fmt-lock" id="fmtLock" title="Kunci/buka kunci section yang dipilih">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+    </button>
+  </div>
+
+  <main class="stage">
+    <article class="page" id="cv">
+
+      <!-- ============ SIDEBAR ============ -->
+      <aside class="sidebar">
+        <header class="sb-head">
+          <h1>Joanda Dyrta</h1>
+          <p>Network Engineer Enthusiast</p>
+        </header>
+
+        <div class="sb-body">
+          <section>
+            <h2>Detail pribadi</h2>
+            <ul class="contact" data-list>
+              <li data-item>
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>joandadirta@gmail.com</span>
+              </li>
+              <li data-item>
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>+62 831-4849-4413</span>
+              </li>
+              <li data-item>
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                <span>Jl. Mintojiwo II Rt.03 Rw.07, Kel. Gisikdrono, Kec. Semarang Barat 50149 Semarang, Jawa Tengah</span>
+              </li>
+              <li data-item>
+                <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                <span>10 Mei 2008</span>
+              </li>
+              <li data-item>
+                <svg viewBox="0 0 24 24"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+                <span>Indonesia</span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Pendidikan</h2>
+            <div class="edu-list" data-list>
+              <div class="edu" data-item>
+                <strong>SMP</strong>
+                <span class="school">SMP Negeri 1 Semarang, Semarang</span>
+                <strong class="years">2021 - 2024</strong>
+              </div>
+              <div class="edu" data-item>
+                <strong>SMK</strong>
+                <span class="school">SMK Negeri 7 Semarang, Semarang</span>
+                <strong class="years">2024 - 2028</strong>
+                <span>Sistem Informasi, Jaringan dan Aplikasi (SIJA)</span>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Keahlian Teknis</h2>
+            <ul class="skills" data-list>
+              <li data-item>Cisco Packet Tracer - Simulasi Jaringan Dasar</li>
+              <li data-item>Mikrotik - Konfigurasi IP Statis &amp; Dinamis</li>
+              <li data-item>Mikrotik - Static &amp; Dynamic Routing (RIP, OSPF, BGP)</li>
+              <li data-item>Access Point Configuration</li>
+              <li data-item>Basic Network Troubleshooting</li>
+              <li data-item>Computers Hardware</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Soft Skills</h2>
+            <ul class="skills" data-list>
+              <li data-item>Emotional Intelligence &amp; Emotional Management</li>
+              <li data-item>Problem Solving &amp; Analytical Thinking</li>
+              <li data-item>Fast Learner &amp; Adaptable</li>
+            </ul>
+          </section>
+        </div>
+
+        <footer class="sb-foot"></footer>
+      </aside>
+
+      <!-- ============ KONTEN UTAMA ============ -->
+      <div class="content">
+        <section>
+          <h2>Profil</h2>
+          <p class="profile">Lulusan SMK Negeri 7 yang memiliki ketertarikan dalam dunia jaringan serta keahlian dalam mendiagnosa kerusakan pada alat elektronik seperti handphone, laptop, dan komputer. Memiliki kemampuan dalam <strong>merancang struktur jaringan</strong> sebuah perusahaan/instansi, <strong>troubleshooting</strong>, dan sudah pernah mencoba pelatihan untuk mendapatkan sertifikasi <strong>MikroTik Certified Network Associate (MTCNA)</strong> serta <strong>Cisco Certified Network Associate (CCNA)</strong>.</p>
+        </section>
+
+        <section>
+          <h2>Sertifikat</h2>
+          <div class="rows" data-list>
+            <div class="row" data-item>
+              <span>Cisco - IT Essentials</span>
+              <span class="date">Mei 2025</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Pengalaman Praktik Networking</h2>
+          <ul class="bullets" data-list>
+            <li data-item>Melakukan <strong>simulasi pembuatan dan konfigurasi struktur jaringan dasar menggunakan Cisco Packet Tracer</strong>.</li>
+            <li data-item>Melakukan konfigurasi <strong>Static Routing</strong> dan <strong>Dynamic Routing</strong> menggunakan RIP, OSPF, dan BGP pada <strong>router</strong>.</li>
+            <li data-item>Melakukan konfigurasi dasar pada <strong>Mikrotik</strong> seperti <strong>IP Addressing, DHCP Server, DHCP Client, NAT, Hotspot, Bandwidth Simple Queue, Static Routing, Dynamic Routing (RIP, BGP, OSPF)</strong>.</li>
+            <li data-item>Melakukan konfigurasi Access Point dengan mode <strong>AP</strong>, <strong>Repeater</strong>, <strong>Bridge</strong>, <strong>Client/Station</strong>, dan <strong>WISP</strong>.</li>
+            <li data-item>Melakukan pembuatan kabel <strong>UTP</strong> hingga pengetesan koneksi kabel.</li>
+            <li data-item>Melakukan praktik <strong>pemasangan konektor</strong> pada kabel <strong>fiber optik drop core</strong>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Pengalaman Organisasi</h2>
+          <div class="org-list" data-list>
+            <div class="org" data-item>
+              <div class="row"><strong>Sekretaris</strong><strong class="date">Agt 2024 - Okt 2026</strong></div>
+              <div class="place">Stemba Cinemathography, SMK Negeri 7 Semarang</div>
+              <p>Menjadi sekretaris dalam komunitas pecinta cinemathography yang selalu siap dalam hal notulensi dan pembuatan surat resmi untuk keperluan peminjaman dan pemberitahuan acara atau pertemuan tertentu.</p>
+            </div>
+            <div class="org" data-item>
+              <div class="row"><strong>Wakil</strong><strong class="date">Okt 2026 - Sekarang</strong></div>
+              <div class="place">Seven Lens, SMK Negeri 7 Semarang</div>
+              <p>Menjadi wakil dalam ekstrakurikuler yang memiliki minat dalam hal dokumentasi yang bertugas dalam koordinasi divisi fotografi dan videografi.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </article>
+  </main>
+
+  <script src="vendor/html2pdf.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
